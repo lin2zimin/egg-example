@@ -19,6 +19,7 @@ class BillService extends Service {
       'id, paymentType, amount, date, typeID, typeName, userID, remark';
     const sql = `select ${QUERY_STR} from bill where userID = ${id}`;
     const res = await app.mysql.query(sql);
+    console.log(res)
     return res;
   }
 

@@ -33,7 +33,7 @@ class UploadController extends Controller {
     ctx.body = {
       code: 200,
       msg: 'upload  successfully',
-      data: uploadDir.replace(/app/g, '').replace(/\\/g, '/'),
+      data:uploadDir.replace(/app/g, '').replace(/\\/g, '/'),
     };
   }
 }

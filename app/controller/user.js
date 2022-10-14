@@ -121,7 +121,7 @@ class UserController extends Controller {
     try {
 
       const userInfo = await ctx.service.user.getUserByName(decode.userName);
-      const { id, userName, signature, avatar } = userInfo;
+      const { id, userName, signature, avatar,nickName } = userInfo;
       ctx.body = {
         code: 200,
         msg: '用户信息请求成功',
@@ -130,6 +130,7 @@ class UserController extends Controller {
           userName,
           signature: signature || '',
           avatar: avatar || defaultAvatar,
+          nickName
         },
       };
     } catch (error) {
@@ -144,18 +145,19 @@ class UserController extends Controller {
   async editUserInfo() {
     const { ctx, app } = this;
     // 默认值为 ‘ ’
-    const { signature = '', avatar = '' } = ctx.request.body;
+    const { signature = '', avatar = '', nickName='' } = ctx.request.body;
     // 这里res 是一个 mysql update函数返回的一个变更信息对象
     const decode = getDecode(ctx, app);
     // 从token中拿出id 进行匹配
     const { userName } = decode;
 
     const userInfo = await ctx.service.user.getUserByName(userName);
-    console.log('--------------', avatar);
+    console.log(userInfo , nickName)
     await ctx.service.user.editUserInfo({
       ...userInfo,
       signature,
       avatar,
+      nickName,
     });
     ctx.body = {
       code: 200,

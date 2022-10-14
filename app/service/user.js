@@ -57,6 +57,7 @@ class UserService extends Service {
           id: params.id,
         }
       );
+      
       return res;
     } catch (error) {
       console.log(error);

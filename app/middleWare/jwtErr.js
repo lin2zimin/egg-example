@@ -11,7 +11,6 @@ module.exports = secret => {
       try {
         decode = ctx.app.jwt.verify(token, secret);
         // next（） 跳到下一个中间件，执行完再回来
-        console.log('decode11111111111', decode);
         await next();
       } catch (error) {
         console.log('error', error);

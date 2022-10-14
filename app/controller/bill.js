@@ -219,6 +219,7 @@ class BillController extends Controller {
     try {
       // all data of current user
       const res = await ctx.service.bill.list(userID);
+      
       const start = moment(date).startOf('month').unix() * 1000;
       const end = moment(date).endOf('month').unix() * 1000;
       // data for the selected month
