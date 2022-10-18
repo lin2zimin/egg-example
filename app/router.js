@@ -3,9 +3,10 @@
  * @param {Egg.Application} app - egg application
  */
 module.exports = app => {
-  const { router, controller, middleware } = app;
+  const { router, controller, middleware  } = app;
   // 所有需要验证token的请求，第二个参数传入-jwt这个函数
-  const _jwt = middleware.jwtErr(app.config.secret);
+  const _jwt = middleware.jwtErr(app.config.jwt.secret);
+  console.log(app.config.jwt.secret);
   // const _test = middleware.testMiddle();
   router.post('/api/user/register', controller.user.register);
   router.get('/api/user/getUsers', controller.user.getUsers);

@@ -60,9 +60,9 @@ class UserController extends Controller {
   async login() {
     const { ctx, app } = this;
     const { userName, pwd } = ctx.request.body;
-    console.log(userName);
+    // console.log(userName);
     const userInfo = await ctx.service.user.getUserByName(userName);
-    console.log(userInfo);
+    // console.log(userInfo);
     // 拿到的账号在数据库找不到
     if (!userInfo || !userInfo.id) {
       ctx.body = {
@@ -110,7 +110,7 @@ class UserController extends Controller {
         ...decode,
       },
     };
-    console.log('doing controller !!!!!!');
+    // console.log('doing controller !!!!!!');
   }
   async getUserInfo() {
     const { ctx, app } = this;
